@@ -1,0 +1,35 @@
+{
+  "name": "CompareQueries",
+  "id": "grafana-Comparequeries-datasource",
+  "type": "datasource",
+
+  "metrics": true,
+  "mixed": true,
+  "hiddenQueries": true,
+
+  "queryOptions": {
+    "minInterval": true
+  },
+
+  "info": {
+    "version": "0.0.1",
+    "author": {
+      "name": "nfw",
+      "url": "https://github.com/AutohomeCorp/grafana-compare-queries"
+    },
+    "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/AutohomeCorp/grafana-compare-queries#readme"
+      }
+    ],
+    "logos": {
+      "small": "img/logo.png",
+      "large": "img/logo.png"
+    },
+    "dependencies": {
+      "grafanaVersion": "4.x.x",
+      "plugins": []
+    }
+  }
+}
