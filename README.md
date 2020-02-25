@@ -4,7 +4,7 @@
 
 [中文文档](README_zh.md)
 
-Webpack copy of [grafana-graph-panel](https://github.com/CorpGlory/grafana-graph-panel) implementing https://github.com/grafana/grafana/issues/2093
+Webpack copy of [grafana-meta-queries](https://github.com/GoshPosh/grafana-meta-queries) implementing https://github.com/grafana/grafana/issues/2093
 
 This plugin is built as a datasource plugin that combines and contrasts different time shifts data.
 
