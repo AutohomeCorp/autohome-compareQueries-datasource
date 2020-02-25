@@ -1,10 +1,10 @@
-# Grafana Compare Panel
+# Grafana Compare Query Datasource
 
 ---
 
 [Engilsh](README.md)
 
-基于[grafana-graph-panel](https://github.com/CorpGlory/grafana-graph-panel) 实现，主要解决问题： https://github.com/grafana/grafana/issues/2093
+基于Grafana Datasource实现，主要解决问题： https://github.com/grafana/grafana/issues/2093
 
 这是一个数据源插件，可以在同一个面板上进行同环比曲线展示。
 
