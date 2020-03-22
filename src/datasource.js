@@ -184,14 +184,14 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
     var units = ['y', 'M', 'w', 'd', 'h', 'm', 's']
     function parseShiftToMs(timeShift) {
       let timeShiftObj = parseTimeShift(timeShift)
-      var num = timeShiftObj.num
+      var num = 0 - timeShiftObj.num
       var unit = timeShiftObj.unit
       if (!_.includes(units, unit)) {
         return undefined
       } else {
         let curTime = moment()
         let shiftTime = curTime.clone().add(num, unit)
-        return shiftTime.valueOf() - curTime.valueOf()
+        return curTime.valueOf() - shiftTime.valueOf()
       }
     }
     function parseTimeShift(timeShift) {
