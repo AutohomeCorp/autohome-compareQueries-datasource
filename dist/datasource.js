@@ -111,7 +111,11 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
                     to: compareOptions.range.to
                   }
                   compareOptions.rangeRaw = compareOptions.range.raw
+
+                  queryObj.refId = queryObj.refId + '_' + timeShiftValue
                   compareOptions.targets = [queryObj]
+                  compareOptions.requestId =
+                    compareOptions.requestId + '_' + timeShiftValue
 
                   var compareResult = comapreDs.query(compareOptions)
                   return compareResult
