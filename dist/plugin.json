@@ -1,13 +1,13 @@
 {
   "name": "CompareQueries",
-  "id": "autohome-compareQueries-datasource",
+  "id": "autohome-comparequeries-datasource",
   "type": "datasource",
 
   "metrics": true,
   "mixed": true,
   "hiddenQueries": true,
   "annotations": false,
-  
+
   "queryOptions": {
     "minInterval": true
   },
