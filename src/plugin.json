@@ -6,15 +6,17 @@
   "metrics": true,
   "mixed": true,
   "hiddenQueries": true,
-
+  "annotations": false,
+  
   "queryOptions": {
     "minInterval": true
   },
 
   "info": {
+    "description": "This plugin is built as a datasource plugin that combines and contrasts different time shifts data.",
     "version": "1.0.0",
     "author": {
-      "name": "nfw",
+      "name": "AutohomeCorp",
       "url": "https://github.com/AutohomeCorp/autohome-compareQueries-datasource"
     },
     "links": [
