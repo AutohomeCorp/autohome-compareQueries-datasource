@@ -1,6 +1,6 @@
 {
   "name": "CompareQueries",
-  "id": "grafana-Comparequeries-datasource",
+  "id": "autohome-compareQueries-datasource",
   "type": "datasource",
 
   "metrics": true,
@@ -12,15 +12,15 @@
   },
 
   "info": {
-    "version": "0.0.1",
+    "version": "1.0.0",
     "author": {
       "name": "nfw",
-      "url": "https://github.com/AutohomeCorp/grafana-compare-queries"
+      "url": "https://github.com/AutohomeCorp/autohome-compareQueries-datasource"
     },
     "links": [
       {
         "name": "GitHub",
-        "url": "https://github.com/AutohomeCorp/grafana-compare-queries#readme"
+        "url": "https://github.com/AutohomeCorp/autohome-compareQueries-datasource#readme"
       }
     ],
     "logos": {

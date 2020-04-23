@@ -2,7 +2,7 @@
 
 ---
 
-[中文文档](README_zh.md)
+[中文文档](https://github.com/AutohomeCorp/autohome-compareQueries-datasource/blob/master/README_zh.md)
 
 Webpack copy of [grafana-meta-queries](https://github.com/GoshPosh/grafana-meta-queries) implementing https://github.com/grafana/grafana/issues/2093
 
@@ -12,9 +12,10 @@ Time shift supports the following units: s (seconds), m (minutes), h (hours), d 
 
 # Screenshots
 
-![Screenshot1](/img/step-1.png)
+![Screenshot1](https://raw.githubusercontent.com/AutohomeCorp/autohome-compareQueries-datasource/master/img/step-1.png)
 
-![Screenshot2](/img/step-2.png)
+![Screenshot2](https://raw.githubusercontent.com/AutohomeCorp/autohome-compareQueries-datasource/master/img/step-2.png)
+
 
 # Installation
 
