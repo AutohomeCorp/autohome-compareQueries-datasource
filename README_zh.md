@@ -2,7 +2,7 @@
 
 ---
 
-[Engilsh](README.md)
+[Engilsh](https://github.com/AutohomeCorp/autohome-compareQueries-datasource/blob/master/README.md)
 
 基于Grafana Datasource实现，主要解决问题： https://github.com/grafana/grafana/issues/2093
 
@@ -12,9 +12,9 @@ Time shift 支持以下单位：s（秒），m（分钟），h（小时），d�
 
 # 截图
 
-![Screenshot1](/img/step-1.png)
+![Screenshot1](https://raw.githubusercontent.com/AutohomeCorp/autohome-compareQueries-datasource/master/img/step-1.png)
 
-![Screenshot2](/img/step-2.png)
+![Screenshot2](https://raw.githubusercontent.com/AutohomeCorp/autohome-compareQueries-datasource/master/img/step-2.png)
 
 # 安装
 
