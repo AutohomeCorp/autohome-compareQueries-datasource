@@ -34,7 +34,8 @@
     "underscore.string": ">=3.3.5",
     "js-yaml": ">=3.13.1",
     "kind-of": ">=6.0.3",
-    "minimatch": ">=3.0.2"
+    "minimatch": ">=3.0.2",
+    "qs": ">=6.0.4"
   },
   "dependencies": {
     "typescript": "^1.7.5"
