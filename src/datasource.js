@@ -18,6 +18,7 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
 
     // Called once per panel (graph)
     this.query = function(options) {
+
       var _this = this
       var sets = _.groupBy(options.targets, 'datasource')
       var querys = _.groupBy(options.targets, 'refId')
@@ -30,7 +31,8 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
             return _this._compareQuery(options, targets, querys, _this)
           } else {
             opt.targets = targets
-            return ds.query(opt)
+            let result=ds.query(opt)
+            return typeof result === 'Observable' ? result.toPromise():result
           }
         })
         promises.push(promise)
@@ -118,7 +120,7 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
                     compareOptions.requestId + '_' + timeShiftValue
 
                   var compareResult = comapreDs.query(compareOptions)
-                  return compareResult
+                  return typeof compareResult === 'Observable' ? compareResult.toPromise():compareResult
                 })
                 .then(function(compareResult) {
                   var data = compareResult.data
