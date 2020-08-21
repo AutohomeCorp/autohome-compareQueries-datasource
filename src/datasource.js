@@ -134,8 +134,10 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
                       timeShift.alias == ''
                     ) {
                       line.target = line.target + '_' + timeShiftValue
+                      line.title = line.title + '_' + timeShiftValue
                     } else {
                       line.target = line.target + '_' + timeShiftAlias
+                      line.title = line.title + '_' + timeShiftAlias
                     }
 
                     if (target.process) {
