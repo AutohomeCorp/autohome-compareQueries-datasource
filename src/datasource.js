@@ -134,10 +134,10 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
                       timeShift.alias == ''
                     ) {
                       line.target = line.target + '_' + timeShiftValue
-                      line.title = line.title + '_' + timeShiftValue
+                      typeof line.title != 'undefined' && line.title != null && (line.title = line.title + '_' + timeShiftValue)
                     } else {
                       line.target = line.target + '_' + timeShiftAlias
-                      line.title = line.title + '_' + timeShiftAlias
+                      typeof line.title != 'undefined' && line.title != null && (line.title = line.title + '_' + timeShiftAlias)
                     }
 
                     if (target.process) {
@@ -157,7 +157,7 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
                         }
                       }
                     }
-
+                    
                     line.hide = target.hide
                   })
                   return {
