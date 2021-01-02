@@ -72,16 +72,16 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
         var queryObj = angular.copy(querys[query][0])
         queryObj.hide = false
         if (queryObj) {
-          var comapreDsName = queryObj.datasource
+          var compareDsName = queryObj.datasource
           if (target.timeShifts && target.timeShifts.length > 0) {
             _.forEach(target.timeShifts, function(timeShift) {
               var timeShiftValue
               var timeShiftAlias
 
               var comparePromise = _this.datasourceSrv
-                .get(comapreDsName)
-                .then(function(comapreDs) {
-                  if (comapreDs.meta.id === _this.meta.id) {
+                .get(compareDsName)
+                .then(function(compareDs) {
+                  if (compareDs.meta.id === _this.meta.id) {
                     return { data: [] }
                   }
                   timeShiftValue = _this.templateSrv.replace(
@@ -91,7 +91,7 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
                   timeShiftAlias = _this.templateSrv.replace(
                     timeShift.alias,
                     options.scopedVars
-                  )
+                  ) || timeShiftValue
 
                   if (
                     timeShiftValue == null ||
@@ -120,7 +120,7 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
                   compareOptions.requestId =
                     compareOptions.requestId + '_' + timeShiftValue
 
-                  var compareResult = comapreDs.query(compareOptions)
+                  var compareResult = compareDs.query(compareOptions)
                   return typeof compareResult.toPromise === 'function'
                     ? compareResult.toPromise()
                     : compareResult
@@ -128,16 +128,12 @@ define(['angular', 'lodash', 'moment'], function(angular, _, moment) {
                 .then(function(compareResult) {
                   var data = compareResult.data
                   data.forEach(function(line) {
-                    if (
-                      typeof timeShift.alias == 'undefined' ||
-                      timeShift.alias == null ||
-                      timeShift.alias == ''
-                    ) {
-                      line.target = line.target + '_' + timeShiftValue
-                      typeof line.title != 'undefined' && line.title != null && (line.title = line.title + '_' + timeShiftValue)
-                    } else {
+                    // if old time series format else if new data frames format
+                    if (line.target) {
                       line.target = line.target + '_' + timeShiftAlias
                       typeof line.title != 'undefined' && line.title != null && (line.title = line.title + '_' + timeShiftAlias)
+                    } else if (line.fields) {
+                      line.name = line.name + '_' + timeShiftAlias
                     }
 
                     if (target.process) {
