@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import moment from 'moment'; // eslint-disable-line no-restricted-imports
 
+import { ArrayVector, MutableField } from '@grafana/data';
+
 export class CompareQueriesDatasource {
   datasourceSrv: any;
   $q: any;
@@ -118,14 +120,37 @@ export class CompareQueriesDatasource {
               .then(function(compareResult) {
                 var data = compareResult.data;
                 data.forEach(function(line) {
-                  // if old time series format else if new data frames format
                   if (line.target) {
+                    // if old time series format
                     line.target = _this.generalAlias(line.target, timeShiftAlias, aliasType, delimiter);
                     typeof line.title !== 'undefined' &&
                       line.title !== null &&
                       (line.title = _this.generalAlias(line.title, timeShiftAlias, aliasType, delimiter));
                   } else if (line.fields) {
-                    line.name = _this.generalAlias(line.name, timeShiftAlias, aliasType, delimiter);
+                    //else if new data frames format with multiple series
+                    line.fields.forEach(function(field) {
+                      if (field.name) {
+                        field.name = _this.generalAlias(field.name, timeShiftAlias, aliasType, delimiter);
+                      }
+
+                      if (field.config && field.config.displayName) {
+                        field.config.displayName = _this.generalAlias(
+                          field.config.displayName,
+                          timeShiftAlias,
+                          aliasType,
+                          delimiter
+                        );
+                      }
+
+                      if (field.config && field.config.displayNameFromDS) {
+                        field.config.displayNameFromDS = _this.generalAlias(
+                          field.config.displayNameFromDS,
+                          timeShiftAlias,
+                          aliasType,
+                          delimiter
+                        );
+                      }
+                    });
                   }
 
                   if (target.process) {
@@ -139,9 +164,28 @@ export class CompareQueriesDatasource {
                       }
                     } else {
                       if (line.datapoints) {
+                        // if old time series format
                         line.datapoints.forEach(function(datapoint) {
                           datapoint[1] = datapoint[1] + timeShift_ms;
                         });
+                      } else if (line.fields && line.fields.length > 0) {
+                        //else if new data frames format
+                        const unshiftedTimeField = line.fields.find(field => field.type === 'time');
+
+                        if (unshiftedTimeField) {
+                          const timeField: MutableField = {
+                            name: unshiftedTimeField.name,
+                            type: unshiftedTimeField.type,
+                            config: unshiftedTimeField.config || {},
+                            labels: unshiftedTimeField.labels,
+                            values: new ArrayVector(),
+                          };
+
+                          for (let i = 0; i < line.length; i++) {
+                            timeField.values.set(i, unshiftedTimeField.values.get(i) + timeShift_ms);
+                          }
+                          line.fields[0] = timeField;
+                        }
                       }
                     }
                   }
