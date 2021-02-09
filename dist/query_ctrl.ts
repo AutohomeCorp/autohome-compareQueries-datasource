@@ -9,7 +9,7 @@ export class CompareQueriesQueryCtrl extends QueryCtrl {
   errors: any
   query: any
   target: any
-
+  aliasTypes = ["suffix","prefix","absolute"]
   /** @ngInject **/
   constructor($scope, $injector, $q) {
     super($scope, $injector)
@@ -30,6 +30,12 @@ export class CompareQueriesQueryCtrl extends QueryCtrl {
   onChangeInternal() {
     this.refresh() // Asks the panel to refresh data.
   }
+  onChangeAliasType(timeShift) {
+    if(timeShift && timeShift.aliasType === 'absolute'){
+      timeShift.delimiter = ""
+    }
+    this.refresh() // Asks the panel to refresh data.
+  }
   addTimeShifts() {
     let id = this.getTimeShiftId()
     this.target.timeShifts.push({ id: id })
@@ -44,6 +50,10 @@ export class CompareQueriesQueryCtrl extends QueryCtrl {
   }
   refreshTimeShifts() {
     this.refresh()
+  }
+  onAliasAsChange(aliasAs){
+    console.error("timeShift.aliasAs="+this.target.aliasAs);
+    console.error("aliasAs="+aliasAs);
   }
   getTimeShiftId() {
     let id = 0

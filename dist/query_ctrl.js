@@ -21,6 +21,7 @@ System.register(['lodash', './sdk/sdk'], function(exports_1) {
                 /** @ngInject **/
                 function CompareQueriesQueryCtrl($scope, $injector, $q) {
                     _super.call(this, $scope, $injector);
+                    this.aliasTypes = ["suffix", "prefix", "absolute"];
                     if (!this.target.timeShifts) {
                         this.target.timeShifts = [];
                     }
@@ -37,6 +38,12 @@ System.register(['lodash', './sdk/sdk'], function(exports_1) {
                 CompareQueriesQueryCtrl.prototype.onChangeInternal = function () {
                     this.refresh(); // Asks the panel to refresh data.
                 };
+                CompareQueriesQueryCtrl.prototype.onChangeAliasType = function (timeShift) {
+                    if (timeShift && timeShift.aliasType === 'absolute') {
+                        timeShift.delimiter = "";
+                    }
+                    this.refresh(); // Asks the panel to refresh data.
+                };
                 CompareQueriesQueryCtrl.prototype.addTimeShifts = function () {
                     var id = this.getTimeShiftId();
                     this.target.timeShifts.push({ id: id });
@@ -51,6 +58,10 @@ System.register(['lodash', './sdk/sdk'], function(exports_1) {
                 };
                 CompareQueriesQueryCtrl.prototype.refreshTimeShifts = function () {
                     this.refresh();
+                };
+                CompareQueriesQueryCtrl.prototype.onAliasAsChange = function (aliasAs) {
+                    console.error("timeShift.aliasAs=" + this.target.aliasAs);
+                    console.error("aliasAs=" + aliasAs);
                 };
                 CompareQueriesQueryCtrl.prototype.getTimeShiftId = function () {
                     var id = 0;
