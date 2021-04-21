@@ -1,11 +1,13 @@
 {
   "name": "grafana-compare-queries",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Grafana plugin for Compare Queries",
   "main": "index.js",
   "scripts": {
-    "build": "grunt",
-    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+    "build": "grafana-toolkit plugin:build",
+    "test": "grafana-toolkit plugin:test",
+    "dev": "grafana-toolkit plugin:dev",
+    "watch": "grafana-toolkit plugin:dev --watch"
   },
   "repository": {
     "type": "git",
@@ -20,25 +22,11 @@
     "url": "https://github.com/AutohomeCorp/grafana-compare-queries/issues"
   },
   "devDependencies": {
-    "debug": "~2.6.9",
-    "braces": "~2.3.2",
-    "lodash": ">=4.17.19",
-    "grunt": "~0.4.5",
-    "grunt-cli": "1.2.0",
-    "load-grunt-tasks": "3.5.2",
-    "grunt-execute": "~0.2.2",
-    "grunt-contrib-watch": "1.0.0",
-    "grunt-contrib-copy": "1.0.0",
-    "grunt-typescript": "^0.8.0",
-    "grunt-contrib-clean": "1.1.0",
-    "underscore.string": ">=3.3.5",
-    "js-yaml": ">=3.13.1",
-    "kind-of": ">=6.0.3",
-    "minimatch": ">=3.0.2",
-    "qs": ">=6.0.4"
-  },
-  "dependencies": {
-    "typescript": "^1.7.5"
+    "@grafana/data": "next",
+    "@grafana/ui": "next",
+    "@grafana/toolkit": "next",
+    "@types/grafana": "github:CorpGlory/types-grafana.git",
+    "lodash": ">=4.17.19"
   },
   "homepage": ""
 }

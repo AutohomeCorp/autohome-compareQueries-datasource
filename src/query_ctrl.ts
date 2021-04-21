@@ -1,70 +1,62 @@
-///<reference path="../headers/common.d.ts" />
-
-import _ from 'lodash'
-import kbn from 'app/core/utils/kbn'
-import { QueryCtrl } from './sdk/sdk'
+import _ from 'lodash';
+// import kbn from 'app/core/utils/kbn';
+import { QueryCtrl } from 'grafana/app/plugins/sdk';
 
 export class CompareQueriesQueryCtrl extends QueryCtrl {
-  static templateUrl = 'partials/query.editor.html'
-  errors: any
-  query: any
-  target: any
-  aliasTypes = ["suffix","prefix","absolute"]
+  static templateUrl = 'partials/query.editor.html';
+  errors: any;
+  query: any;
+  target: any;
+  aliasTypes = ['suffix', 'prefix', 'absolute'];
   /** @ngInject **/
-  constructor($scope, $injector, $q) {
-    super($scope, $injector)
+  constructor($scope, $injector) {
+    super($scope, $injector);
     if (!this.target.timeShifts) {
-      this.target.timeShifts = []
+      this.target.timeShifts = [];
     }
-    if (this.target.timeShifts.length == 0) {
-      this.addTimeShifts()
+    if (this.target.timeShifts.length === 0) {
+      this.addTimeShifts();
     }
-    if (typeof this.target.process == 'undefined') {
-      this.target.process = true
+    if (typeof this.target.process === 'undefined') {
+      this.target.process = true;
     }
   }
 
   targetBlur() {
-    this.refresh()
+    this.refresh();
   }
   onChangeInternal() {
-    this.refresh() // Asks the panel to refresh data.
-  }
-  onChangeAliasType(timeShift) {
-    if(timeShift && timeShift.aliasType === 'absolute'){
-      timeShift.delimiter = ""
-    }
-    this.refresh() // Asks the panel to refresh data.
+    this.refresh(); // Asks the panel to refresh data.
   }
   addTimeShifts() {
-    let id = this.getTimeShiftId()
-    this.target.timeShifts.push({ id: id })
+    let id = this.getTimeShiftId();
+    this.target.timeShifts.push({ id: id });
   }
   removeTimeShift(timeShift) {
     if (this.target.timeShifts && this.target.timeShifts.length <= 1) {
-      return
+      return;
     }
-    var index = _.indexOf(this.target.timeShifts, timeShift)
-    this.target.timeShifts.splice(index, 1)
-    this.refreshTimeShifts()
+    var index = _.indexOf(this.target.timeShifts, timeShift);
+    this.target.timeShifts.splice(index, 1);
+    this.refreshTimeShifts();
   }
   refreshTimeShifts() {
-    this.refresh()
+    this.refresh();
   }
-  onAliasAsChange(aliasAs){
-    console.error("timeShift.aliasAs="+this.target.aliasAs);
-    console.error("aliasAs="+aliasAs);
+  onAliasAsChange(aliasAs) {
+    console.error('timeShift.aliasAs=' + this.target.aliasAs);
+    console.error('aliasAs=' + aliasAs);
   }
   getTimeShiftId() {
-    let id = 0
+    let id = 0;
     while (true) {
       let notExits = _.every(this.target.timeShifts, function(timeShift) {
-        return timeShift.id !== id
-      })
+        return timeShift.id !== id;
+      });
       if (notExits) {
-        return id
+        return id;
       } else {
-        id++
+        id++;
       }
     }
   }
