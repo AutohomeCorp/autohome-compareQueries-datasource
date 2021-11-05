@@ -15,6 +15,12 @@
   "info": {
     "description": "This plugin is built as a datasource plugin that combines and contrasts different time shifts data.",
     "version": "1.0.0",
+    "updated": "2021-11-05",
+    "keywords": [
+      "datasource",
+      "compare",
+      "time shift"
+    ],
     "author": {
       "name": "AutohomeCorp",
       "url": "https://github.com/AutohomeCorp/autohome-compareQueries-datasource"
@@ -28,10 +34,11 @@
     "logos": {
       "small": "img/logo.png",
       "large": "img/logo.png"
-    },
-    "dependencies": {
-      "grafanaVersion": "4.x.x",
-      "plugins": []
     }
+  },
+  "dependencies": {
+    "grafanaDependency": "4.x.x",
+    "grafanaVersion": "4.x.x",
+    "plugins": []
   }
 }
