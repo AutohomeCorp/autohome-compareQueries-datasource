@@ -30,7 +30,13 @@ export class CompareQueriesDatasource {
   // Called once per panel (graph)
   query(options) {
     var _this = this;
-    var sets = _.groupBy(options.targets, 'datasource');
+    var sets = _.groupBy(options.targets, function(ds) {
+      // Trying to maintain compatibility with grafana lower then 8.3.x
+      if (ds.datasource.uid === undefined) {
+        return ds.datasource;
+      }
+      return ds.datasource.uid;
+    });
     var querys = _.groupBy(options.targets, 'refId');
     var promises: any[] = [];
     _.forEach(sets, function(targets, dsName) {
