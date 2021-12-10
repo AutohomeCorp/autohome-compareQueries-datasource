@@ -15,7 +15,7 @@
   "info": {
     "description": "This plugin is built as a datasource plugin that combines and contrasts different time shifts data.",
     "version": "1.0.0",
-    "updated": "2021-11-05",
+    "updated": "2021-12-10",
     "keywords": [
       "datasource",
       "compare",
@@ -37,7 +37,6 @@
     }
   },
   "dependencies": {
-    "grafanaDependency": "4.x.x",
     "grafanaVersion": "4.x.x",
     "plugins": []
   }
