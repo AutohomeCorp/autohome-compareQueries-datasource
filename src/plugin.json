@@ -14,7 +14,7 @@
 
   "info": {
     "description": "This plugin is built as a datasource plugin that combines and contrasts different time shifts data.",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "updated": "2021-12-10",
     "keywords": [
       "datasource",
