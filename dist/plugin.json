@@ -1,0 +1,43 @@
+{
+  "name": "CompareQueries",
+  "id": "autohome-comparequeries-datasource",
+  "type": "datasource",
+
+  "metrics": true,
+  "mixed": true,
+  "hiddenQueries": true,
+  "annotations": false,
+
+  "queryOptions": {
+    "minInterval": true
+  },
+
+  "info": {
+    "description": "This plugin is built as a datasource plugin that combines and contrasts different time shifts data.",
+    "version": "1.0.1",
+    "updated": "2021-12-10",
+    "keywords": [
+      "datasource",
+      "compare",
+      "time shift"
+    ],
+    "author": {
+      "name": "AutohomeCorp",
+      "url": "https://github.com/AutohomeCorp/autohome-compareQueries-datasource"
+    },
+    "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/AutohomeCorp/autohome-compareQueries-datasource#readme"
+      }
+    ],
+    "logos": {
+      "small": "img/logo.png",
+      "large": "img/logo.png"
+    }
+  },
+  "dependencies": {
+    "grafanaDependency": ">=6.3.0",
+    "plugins": []
+  }
+}
