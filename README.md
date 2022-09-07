@@ -28,8 +28,9 @@ Clone this project into the grafana plugins directory (if you install grafana wi
 - Add time shift on the compare query
 
 ## Build
-Important work on a machine that has Grafana installed.
 
+Important work on a machine that has Grafana installed.
+```
 $ sudo apt-get install npm
 $ sudo apt-get remove cmdtest
 $ sudo apt-get remove yarn
@@ -40,7 +41,7 @@ $ sudo chown -R ubuntu:ubuntu autohome-compareQueries-datasource
 $ cd autohome-compareQueries-datasource/
 $ yarn install
 $ yarn build
-
+```
 
 ## Credits
 
