@@ -1,0 +1,91 @@
+<query-editor-row query-ctrl="ctrl" can-collapse="false">
+  <div class="gf-form-inline">
+    <div class="gf-form">
+      <label class="gf-form-label query-keyword width-4">
+        Query
+      </label>
+      <input
+        type="text"
+        class="gf-form-input"
+        ng-model="ctrl.target.query"
+        spellcheck="false"
+        placeholder="query"
+        ng-blur="ctrl.targetBlur()"
+        bs-typeahead="ctrl.getQueryLetters"
+      />
+      <gf-form-switch
+        class="gf-form"
+        label="Process TimeShift"
+        label-class="width-12"
+        checked="ctrl.target.process"
+        on-change="ctrl.targetBlur()"
+      ></gf-form-switch>
+    </div>
+  </div>
+
+  <div class="gf-form-group">
+    <div class="gf-form" ng-repeat="timeShift in ctrl.target.timeShifts">
+      <span class="gf-form-label">
+        <i class="fa fa-clock-o"></i>
+      </span>
+      <span class="gf-form-label width-6">Time shift</span>
+      <span class="gf-form-label width-4">Amount</span>
+
+      <input
+        type="text"
+        class="gf-form-input max-width-8"
+        placeholder="1h"
+        empty-to-null
+        ng-model="timeShift.value"
+        valid-time-span
+        ng-change="ctrl.targetBlur()"
+        ng-model-onblur
+      />
+
+      <span class="gf-form-label width-4">alias</span>
+      <input
+        type="text"
+        class="gf-form-input max-width-8"
+        placeholder="auto"
+        empty-to-null
+        ng-model="timeShift.alias"
+        ng-change="ctrl.targetBlur()"
+        ng-model-onblur
+      />
+
+      <span class="gf-form-label width-6">alias type</span>
+      <div class="gf-form-select-wrapper">
+        <select
+                class="gf-form-input"
+                ng-model="timeShift.aliasType"
+                ng-init="timeShift.aliasType = timeShift.aliasType || 'suffix'"
+                ng-options="f as f for f in ctrl.aliasTypes"
+                ng-change="ctrl.onChangeAliasType(timeShift)"
+        >
+        </select>
+      </div>
+      <span class="gf-form-label width-4" title="only valid when alias type is suffix or prefix">delimiter</span>
+      <input  ng-disabled = "timeShift.aliasType === 'absolute'"
+              type="text"
+              class="gf-form-input max-width-8"
+              placeholder="default:_"
+              empty-to-null
+              ng-model="timeShift.delimiter"
+              ng-change="ctrl.targetBlur()"
+              ng-model-onblur
+      />
+
+      <label class="gf-form-label" ng-if="ctrl.target.timeShifts.length>1">
+        <a class="pointer" ng-click="ctrl.removeTimeShift(timeShift)">
+          <i class="fa fa-trash"></i>
+        </a>
+      </label>
+    </div>
+    <button
+      class="btn btn-secondary gf-form-btn"
+      ng-click="ctrl.addTimeShifts()"
+    >
+      Add time shift
+    </button>
+  </div>
+</query-editor-row>
